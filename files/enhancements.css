@@ -1,0 +1,39 @@
+/* RAGABVERSE enhancements: grouped navigation, shortcuts hint. Loaded after style.css */
+
+.nav-more { position: relative; }
+.nav-more-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 8px 0; border: 0; background: none; cursor: pointer;
+  color: var(--muted); font: inherit; font-size: 12px; font-weight: 700;
+  transition: color var(--transition-fast, .15s);
+}
+.nav-more-btn:hover,
+.nav-more-btn[aria-expanded="true"],
+.nav-more-btn.has-active { color: var(--text); }
+.nav-more-btn.has-active { box-shadow: inset 0 -2px 0 var(--accent); }
+
+.nav-more-panel {
+  position: absolute; right: 0; top: calc(100% + 10px); z-index: 60;
+  min-width: 190px; padding: 8px;
+  display: grid; gap: 2px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-lg);
+}
+.nav-more-panel[hidden] { display: none; }
+.desktop-nav .nav-more-panel a { padding: 9px 12px; border-radius: 8px; }
+.desktop-nav .nav-more-panel a::after { display: none; }
+.desktop-nav .nav-more-panel a:hover,
+.desktop-nav .nav-more-panel a.active { background: var(--surface-3); color: var(--text); }
+
+[data-theme="dark"] .nav-more-panel { background: #0f1624; border-color: rgba(255,255,255,.1); }
+[data-theme="dark"] .desktop-nav .nav-more-panel a:hover,
+[data-theme="dark"] .desktop-nav .nav-more-panel a.active { background: rgba(255,255,255,.07); }
+
+/* Repo card description added by the GitHub loader */
+.repo-desc { margin: 6px 0 10px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+/* Keyboard users: always see where focus is inside the dropdown */
+.nav-more-btn:focus-visible,
+.nav-more-panel a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 1100px) { .nav-more { display: none; } }
